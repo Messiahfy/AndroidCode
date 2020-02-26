@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "com.hfy.androidcode"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+
+    //网络
+    api("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    api("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+    api("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    api("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    api("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
+
+    //rxjava
+    api("io.reactivex.rxjava2:rxandroid:$rxandroidVersion")
+
+    //gson
+    api("com.google.code.gson:gson:$gsonVersion")
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
